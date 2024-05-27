@@ -3,11 +3,19 @@ using UnityEngine;
 
 public class PoolObject : MonoBehaviour
 {
-    [SerializeField] private int _ountPreload;
+    [SerializeField] private int _countPreload;
 
     protected GameObject Prefab;
 
     private Queue<GameObject> _poolItem = new();
+
+    private void Start()
+    {
+        for (int i = 0; i < _countPreload; i++)
+        {
+            CreateObject();
+        }
+    }
 
     public GameObject TakeObject()
     {

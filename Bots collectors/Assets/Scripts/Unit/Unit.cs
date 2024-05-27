@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Unit : MonoBehaviour
 {
-    [SerializeField] private float speed;
+    [SerializeField] private float _speed;
 
     private Base _base;
     private Item _item;
@@ -17,22 +17,18 @@ public class Unit : MonoBehaviour
     {
         if (collider.TryGetComponent(out Item item) && _item == null)
         {
-            StopCoroutine(_goToResourse);
-            collider.transform.SetParent(transform, false);
-            collider.transform.position = new Vector3(transform.position.x, transform.position.y + 2, transform.position.z);
             _item = item;
+            StopCoroutine(_goToResourse);
+            TakeItem(collider);
             StartGoBase();
         }
 
         if (collider.TryGetComponent(out Base _))
         {
-            StopCoroutine(_goToBase);
-
-            _base.TakeItem(_item);
-
-            _item = null;
-
             IsAtWork = false;
+            StopCoroutine(_goToBase);
+            _base.TakeItem(_item);
+            _item = null;
         }
     }
 
@@ -57,7 +53,7 @@ public class Unit : MonoBehaviour
     {
         while (transform.position != resourse.position)
         {
-            transform.position = Vector3.MoveTowards(transform.position, resourse.position, speed * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, resourse.position, _speed * Time.deltaTime);
             IsAtWork = true;
 
             yield return null;
@@ -68,8 +64,14 @@ public class Unit : MonoBehaviour
     {
         while (transform.position != _base.transform.position)
         {
-            transform.position = Vector3.MoveTowards(transform.position, _base.transform.position, speed * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, _base.transform.position, _speed * Time.deltaTime);
             yield return null;
         }
+    }
+
+    private void TakeItem(Collider collider)
+    {
+        collider.transform.SetParent(transform, false);
+        collider.transform.position = new Vector3(transform.position.x, transform.position.y + 2, transform.position.z);
     }
 }

@@ -19,7 +19,7 @@ public class SpawnerUnit : MonoBehaviour
 
         unit.transform.position = _spawnPoint[Random.Range(0, _spawnPoint.Length)].position;
 
-        AddListBase(unit);
+        AddListBase(GetUnit(unit));
     }
 
     private IEnumerator Spawn()
@@ -30,14 +30,21 @@ public class SpawnerUnit : MonoBehaviour
 
             unit.transform.position = _spawnPoint[i].position;
 
-            AddListBase(unit);
+            AddListBase(GetUnit(unit));
 
             yield return null;
         }
     }
 
-    private void AddListBase(GameObject unit)
+    private void AddListBase(Unit unit)
     {
         _base.AddUnit(unit);
+    }
+
+    private Unit GetUnit(GameObject worker)
+    {
+        worker.TryGetComponent(out Unit unit);
+
+        return unit;
     }
 }

@@ -5,46 +5,45 @@ public class Base : MonoBehaviour
 {
     [SerializeField] private PoolResource _poolResource;
 
-    private List<GameObject> _units = new();
+    private List<Unit> _units = new();
     private List<Item> _resources = new();
 
     public int CountResourse { get; private set; }
-     
-    public void AddUnit(GameObject worker)
+
+    public void AddUnit(Unit unit)
     {
-        if (worker.TryGetComponent(out Unit unit) == true)
-        {
-            unit.SetBase(this);
-            _units.Add(worker);
-        }
+        unit.SetBase(this);
+        _units.Add(unit);
     }
 
     public void TakeItem(Item item)
     {
+        item.SetBusy(false);
+
         ++CountResourse;
 
         _poolResource.ReturnObject(item.gameObject);
-
-        Debug.Log($"Ресурсов {CountResourse}");
     }
 
     public void PoisonWork()
     {
         for (int i = 0; i < _units.Count; i++)
         {
-            GameObject worker = _units[i];
+            Unit unit = _units[i];
 
-            worker.TryGetComponent(out Unit unit);
-
-            if (unit.IsAtWork != true   )
+            if (unit.IsAtWork == false)
             {
-                Item item = _resources[0];
+                foreach (Item item in _resources)
+                {   
+                    if (item.IsBusy != true)
+                    {
+                        item.SetBusy(true);
+                        unit.StartGoResourse(item.transform);
+                        _resources.Remove(item);
 
-                unit.StartGoResourse(item.transform);
-
-                _resources.RemoveAt(0);
-
-                break;
+                        break;
+                    }
+                }
             }
         }
     }
