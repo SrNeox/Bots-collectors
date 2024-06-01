@@ -1,12 +1,5 @@
 using UnityEngine;
 
-public class Item : MonoBehaviour
-{
-    public bool IsBusy { get; private set; }
+public class Item : MonoBehaviour { }
 
-    public void SetBusy(bool isBusy)
-    {
-        IsBusy = isBusy;
-    }
-}
 

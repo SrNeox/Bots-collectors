@@ -1,17 +1,30 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
+using System.Linq;
 using UnityEngine;
 
 public class ResourceFinder : MonoBehaviour
 {
-    [SerializeField] private Base _base;
+    [SerializeField] private int _scanRadius;
+    [SerializeField] private LayerMask _layerMask;
 
-    private void OnTriggerEnter(Collider collider)
+    public event Action<Item> FoundItem;
+
+    public void Scan()
     {
-        if (collider.TryGetComponent(out Item item))
+        Collider[] resources = Physics.OverlapSphere(transform.position, _scanRadius, _layerMask);
+
+        foreach (var resource in resources)
         {
-            _base.LearnAboutResource(item);
-            _base.PoisonWork();
+            if (resource.TryGetComponent(out Item item))
+            {
+                FoundItem.Invoke(item);
+            }
         }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = new Color(1, 1, 1, 0.5f);
+        Gizmos.DrawSphere(transform.position, _scanRadius);
     }
 }

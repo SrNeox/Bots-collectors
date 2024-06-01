@@ -8,43 +8,31 @@ public class SpawnerUnit : MonoBehaviour
     [SerializeField] private PoolUnit _poolUnit;
     [SerializeField] private Base _base;
 
-    private void Awake()
+    private void Start()
     {
         StartCoroutine(Spawn());
     }
 
     public void SpawnNewUnit()
     {
-        GameObject unit = _poolUnit.TakeObject();
+        Unit unit = _poolUnit.GetUnit();
 
         unit.transform.position = _spawnPoint[Random.Range(0, _spawnPoint.Length)].position;
 
-        AddListBase(GetUnit(unit));
+        _base.AddUnit(unit);
     }
 
     private IEnumerator Spawn()
     {
         for (int i = 0; i < _spawnPoint.Length; i++)
         {
-            GameObject unit = _poolUnit.TakeObject();
+            Unit unit = _poolUnit.GetUnit();
 
             unit.transform.position = _spawnPoint[i].position;
 
-            AddListBase(GetUnit(unit));
+            _base.AddUnit(unit);
 
             yield return null;
         }
-    }
-
-    private void AddListBase(Unit unit)
-    {
-        _base.AddUnit(unit);
-    }
-
-    private Unit GetUnit(GameObject worker)
-    {
-        worker.TryGetComponent(out Unit unit);
-
-        return unit;
     }
 }

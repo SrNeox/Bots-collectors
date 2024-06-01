@@ -4,11 +4,24 @@ using UnityEngine;
 public class Base : MonoBehaviour
 {
     [SerializeField] private PoolResource _poolResource;
+    [SerializeField] private ResourceFinder _resourceFinder;
+    [SerializeField] private ScoreItem _scoreItem;
 
     private List<Unit> _units = new();
-    private List<Item> _resources = new();
+    private Queue<Item> _resources = new();
+    private List<Item> _foundItems = new();
 
-    public int CountResourse { get; private set; }
+    public int CountResource { get; private set; }
+
+    private void OnEnable()
+    {
+        _resourceFinder.FoundItem += LearnAboutResource;
+    }
+
+    private void OnDisable()
+    {
+        _resourceFinder.FoundItem -= LearnAboutResource;
+    }
 
     public void AddUnit(Unit unit)
     {
@@ -18,38 +31,38 @@ public class Base : MonoBehaviour
 
     public void TakeItem(Item item)
     {
-        item.SetBusy(false);
-
-        ++CountResourse;
-
-        _poolResource.ReturnObject(item.gameObject);
+        ++CountResource;
+        _poolResource.ReturnItem(item);
+        _scoreItem.UpdateScore();
     }
 
-    public void PoisonWork()
+    public void AssignWork()
     {
         for (int i = 0; i < _units.Count; i++)
         {
-            Unit unit = _units[i];
-
-            if (unit.IsAtWork == false)
+            if (_units[i].IsAtWork == false && _resources.Count > 0)
             {
-                foreach (Item item in _resources)
-                {   
-                    if (item.IsBusy != true)
-                    {
-                        item.SetBusy(true);
-                        unit.StartGoResourse(item.transform);
-                        _resources.Remove(item);
+                Item item = _resources.Dequeue();
+                _units[i].Activate();
+                _units[i].GoToResource(item);
 
-                        break;
-                    }
-                }
+                return;
             }
         }
     }
 
-    public void LearnAboutResource(Item item)
+    private void LearnAboutResource(Item item)
     {
-        _resources.Add(item);
+        if(!_foundItems.Contains(item)) 
+        {
+            AddResource(item);
+        }
+    }
+
+    private void AddResource(Item item)
+    {
+        _foundItems.Add(item);
+        _resources.Enqueue(item);
+        AssignWork();
     }
 }

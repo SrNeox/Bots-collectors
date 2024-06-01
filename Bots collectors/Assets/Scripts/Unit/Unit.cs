@@ -4,69 +4,55 @@ using UnityEngine;
 
 public class Unit : MonoBehaviour
 {
-    [SerializeField] private float _speed;
-
     private Base _base;
     private Item _item;
-    private Coroutine _goToResourse;
-    private Coroutine _goToBase;
+    private UnitMover _mover;
 
     public bool IsAtWork { get; private set; }
 
+    private void Start()
+    {
+        _mover = GetComponent<UnitMover>();
+    }
+
     private void OnTriggerEnter(Collider collider)
     {
-        if (collider.TryGetComponent(out Item item) && _item == null)
+        if (collider.TryGetComponent(out Item item))
         {
-            _item = item;
-            StopCoroutine(_goToResourse);
-            TakeItem(collider);
-            StartGoBase();
+            if (_item == item)
+            {
+                _mover.StopGoResource();
+                TakeItem(collider);
+                _mover.StartGoBase(_base.transform);
+            }
         }
 
-        if (collider.TryGetComponent(out Base _))
+        if (collider.TryGetComponent(out Base baseComponent))
         {
-            IsAtWork = false;
-            StopCoroutine(_goToBase);
-            _base.TakeItem(_item);
-            _item = null;
+            if (_base == baseComponent)
+            {
+                IsAtWork = false;
+                _mover.StopGoBase();
+                _base.TakeItem(_item);
+                _item = null;
+            }
         }
     }
 
-
-    public void SetBase(Base basePosition)
+    public void GoToResource(Item item)
     {
-        _base = basePosition;
+        _item = item;
+        _mover.StartGoResource(item.transform);
     }
 
-    public void StartGoResourse(Transform resourse)
+    public void Activate()
     {
         IsAtWork = true;
-        _goToResourse = StartCoroutine(GoToResourse(resourse));
     }
 
-    private void StartGoBase()
+    public void SetBase(Base newbase)
     {
-        _goToBase = StartCoroutine(GoToBase());
-    }
-
-    private IEnumerator GoToResourse(Transform resourse)
-    {
-        while (transform.position != resourse.position)
-        {
-            transform.position = Vector3.MoveTowards(transform.position, resourse.position, _speed * Time.deltaTime);
-            IsAtWork = true;
-
-            yield return null;
-        }
-    }
-
-    private IEnumerator GoToBase()
-    {
-        while (transform.position != _base.transform.position)
-        {
-            transform.position = Vector3.MoveTowards(transform.position, _base.transform.position, _speed * Time.deltaTime);
-            yield return null;
-        }
+        _base = newbase;
     }
 
     private void TakeItem(Collider collider)

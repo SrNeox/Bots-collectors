@@ -1,49 +1,46 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PoolObject : MonoBehaviour
+public class PoolObject<T> where T : MonoBehaviour
 {
-    [SerializeField] private int _countPreload;
+    private Queue<T> _poolObject = new();
+    private T _prefab;
 
-    protected GameObject Prefab;
-
-    private Queue<GameObject> _poolItem = new();
-
-    private void Start()
+    public PoolObject(T prefab, int preload)
     {
-        for (int i = 0; i < _countPreload; i++)
+        _prefab = prefab;
+
+        for (int i = 0; i < preload; i++)
         {
             CreateObject();
         }
     }
 
-    public GameObject TakeObject()
+    public T GetObject()
     {
-        if (_poolItem.Count == 0)
+        if (_poolObject.Count == 0)
         {
-            _poolItem.Enqueue(CreateObject());
+            CreateObject();
         }
 
-        GameObject item = _poolItem.Dequeue();
+        var item = _poolObject.Dequeue();
 
-        item.SetActive(true);
+        item.gameObject.SetActive(true);
 
         return item;
     }
 
-    public void ReturnObject(GameObject gameObject)
+    public void ReturnObject(T item)
     {
-        gameObject.transform.SetParent(transform, false);
-        gameObject.SetActive(false);
-        _poolItem.Enqueue(gameObject);
+        item.gameObject.SetActive(false);
+        _poolObject.Enqueue(item);
     }
 
-    private GameObject CreateObject()
+    private void CreateObject()
     {
-        GameObject item = Instantiate(Prefab);
+        var item = Object.Instantiate(_prefab);
+        item.gameObject.SetActive(false);
 
-        item.SetActive(false);
-
-        return item;
+        _poolObject.Enqueue(item);
     }
 }
