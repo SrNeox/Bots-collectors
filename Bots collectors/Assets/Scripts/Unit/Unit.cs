@@ -21,9 +21,8 @@ public class Unit : MonoBehaviour
         {
             if (_item == item)
             {
-                _mover.StopGoResource();
                 TakeItem(collider);
-                _mover.StartGoBase(_base.transform);
+                _mover.StartGoInDirection(_base.transform);
             }
         }
 
@@ -31,8 +30,8 @@ public class Unit : MonoBehaviour
         {
             if (_base == baseComponent)
             {
-                IsAtWork = false;
-                _mover.StopGoBase();
+                Deactivate();
+                _mover.StopGoInDirection();
                 _base.TakeItem(_item);
                 _item = null;
             }
@@ -42,17 +41,23 @@ public class Unit : MonoBehaviour
     public void GoToResource(Item item)
     {
         _item = item;
-        _mover.StartGoResource(item.transform);
-    }
-
-    public void Activate()
-    {
-        IsAtWork = true;
+        Activate();
+        _mover.StartGoInDirection(item.transform);
     }
 
     public void SetBase(Base newbase)
     {
         _base = newbase;
+    }
+     
+    public void Activate()
+    {
+        IsAtWork = true;
+    }
+
+    private void Deactivate()
+    {
+        IsAtWork = false;
     }
 
     private void TakeItem(Collider collider)

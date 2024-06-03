@@ -6,14 +6,9 @@ public class PoolObject<T> where T : MonoBehaviour
     private Queue<T> _poolObject = new();
     private T _prefab;
 
-    public PoolObject(T prefab, int preload)
+    public PoolObject(T prefab)
     {
         _prefab = prefab;
-
-        for (int i = 0; i < preload; i++)
-        {
-            CreateObject();
-        }
     }
 
     public T GetObject()

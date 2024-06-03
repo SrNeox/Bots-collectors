@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -32,6 +33,7 @@ public class Base : MonoBehaviour
     public void TakeItem(Item item)
     {
         ++CountResource;
+        RemoveIdenticalResource(item);
         _poolResource.ReturnItem(item);
         _scoreItem.UpdateScore();
     }
@@ -64,5 +66,10 @@ public class Base : MonoBehaviour
         _foundItems.Add(item);
         _resources.Enqueue(item);
         AssignWork();
+    }
+
+    private void RemoveIdenticalResource(Item item)
+    {
+        _foundItems.Remove(item);
     }
 }

@@ -3,13 +3,12 @@ using UnityEngine;
 public class PoolUnit : MonoBehaviour
 {
     [SerializeField] private Unit _prefabUnit;
-    [SerializeField] private int _startCount;
 
     private PoolObject<Unit> _poolUnit;
 
     private void Awake()
     {
-        _poolUnit = new(_prefabUnit, _startCount);
+        _poolUnit = new(_prefabUnit);
     }
 
     public Unit GetUnit()
