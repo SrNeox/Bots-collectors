@@ -60,16 +60,21 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\2022.3.16f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\Flag\Flag.cs" />
     <Compile Include="Assets\Scripts\Unit\UnitMover.cs" />
     <Compile Include="Assets\Scripts\Pool\PoolResource.cs" />
     <Compile Include="Assets\Scripts\Base\ScoreItem.cs" />
     <Compile Include="Assets\Scripts\SpawnerResource\SpawnerResources.cs" />
+    <Compile Include="Assets\Scripts\Base\ColorСhanger.cs" />
     <Compile Include="Assets\Scripts\Base\Base.cs" />
+    <Compile Include="Assets\Scripts\Base\resourceStorage.cs" />
     <Compile Include="Assets\Scripts\Pool\PoolUnit.cs" />
     <Compile Include="Assets\Scripts\Pool\PoolObject.cs" />
     <Compile Include="Assets\Scripts\Item\Item.cs" />
     <Compile Include="Assets\Scripts\Base\ResourceFinder.cs" />
+    <Compile Include="Assets\Scripts\Base\ResourceStorage.cs" />
     <Compile Include="Assets\Scripts\Unit\Unit.cs" />
+    <Compile Include="Assets\Scripts\Base\SpawnerNewBase.cs" />
     <Compile Include="Assets\Scripts\Base\SpawnerUnit.cs" />
   </ItemGroup>
   <ItemGroup>

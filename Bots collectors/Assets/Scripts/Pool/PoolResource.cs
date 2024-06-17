@@ -20,7 +20,12 @@ public class PoolResource : MonoBehaviour
 
     public void ReturnItem(Item item)
     {
-        item.gameObject.transform.SetParent(transform, false);
-        _poolItem.ReturnObject(item);
+        if (item != null)
+        {
+            item.gameObject.transform.SetParent(transform, false);
+            _poolItem.ReturnObject(item);
+        }
+        else
+            return;
     }
 }

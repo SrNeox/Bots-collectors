@@ -17,13 +17,17 @@ public class SpawnerResources : MonoBehaviour
     {
         WaitForSeconds delay = new(_spawnDelay);
 
-        for (int i = 0; i < _spawnPoints.Length; i++)
+        while (true)
         {
-            Item recourse = _poolResource.GetItem();
+            for (int i = 0; i < _spawnPoints.Length; i++)
+            {
+                Item recourse = _poolResource.GetItem();
 
-            recourse.transform.position = _spawnPoints[i].position;
+                recourse.transform.position = _spawnPoints[i].position;
 
-            yield return delay;
+                yield return delay;
+            }
         }
     }
 }
+

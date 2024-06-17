@@ -1,5 +1,4 @@
-using System.Collections;
-using Unity.VisualScripting;
+using TMPro;
 using UnityEngine;
 
 public class Unit : MonoBehaviour
@@ -7,6 +6,7 @@ public class Unit : MonoBehaviour
     private Base _base;
     private Item _item;
     private UnitMover _mover;
+    private Flag _flag;
 
     public bool IsAtWork { get; private set; }
 
@@ -36,20 +36,37 @@ public class Unit : MonoBehaviour
                 _item = null;
             }
         }
+
+        if (collider.TryGetComponent(out Flag flag))
+        {
+            if (flag == _flag)
+            {
+                BildBase(_flag.transform.position);
+            }
+        }
     }
 
-    public void GoToResource(Item item)
+    public void GoToPoint(Transform point)
     {
-        _item = item;
         Activate();
-        _mover.StartGoInDirection(item.transform);
+        _mover.StartGoInDirection(point);
     }
 
     public void SetBase(Base newbase)
     {
         _base = newbase;
     }
-     
+
+    public void SetItem(Item item)
+    {
+        _item = item;
+    }
+
+    public void SetFlag(Flag flag)
+    {
+        _flag = flag;
+    }
+
     public void Activate()
     {
         IsAtWork = true;
@@ -64,5 +81,16 @@ public class Unit : MonoBehaviour
     {
         collider.transform.SetParent(transform, false);
         collider.transform.position = new Vector3(transform.position.x, transform.position.y + 2, transform.position.z);
+    }
+
+    public void BildBase(Vector3 flagPosition)
+    {
+        _base.GiveInfo(out PoolUnit poolUnit, out TextMeshProUGUI text, out Base prefab, out PoolResource poolResource);
+
+        Base newBase = Instantiate(prefab, flagPosition, Quaternion.identity);
+
+        newBase.Initialize(poolUnit, text, prefab, poolResource);
+
+        SetBase(newBase);
     }
 }

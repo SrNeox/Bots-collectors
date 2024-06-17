@@ -6,14 +6,30 @@ public class ScoreItem : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI _textMeshPro;
     [SerializeField] private Base _base;
+    [SerializeField] private SpawnerUnit _spawnerUnit;
 
-    private void Start()
+    private void OnEnable()
     {
-        UpdateScore();
+        _base.AmountResourceUpdated += UpdateScore;
     }
 
-    public void UpdateScore()
+    private void OnDisable()
     {
-        _textMeshPro.text = $"Русурсов {_base.CountResource}";
+        _base.AmountResourceUpdated -= UpdateScore;
+    }
+
+    public void UpdateScore(int resourceCount)
+    {
+        _textMeshPro.text = $"Ресурса:{resourceCount}";
+    }
+
+    public void SetText(TextMeshProUGUI text)
+    {
+        _textMeshPro = text;
+    }
+
+    public TextMeshProUGUI GiveInfoText()
+    {
+        return _textMeshPro;
     }
 }

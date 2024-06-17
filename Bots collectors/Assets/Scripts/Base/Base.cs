@@ -1,75 +1,108 @@
 using System;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Base : MonoBehaviour
 {
-    [SerializeField] private PoolResource _poolResource;
+    [SerializeField] private SpawnerUnit _spawnerUnit;
     [SerializeField] private ResourceFinder _resourceFinder;
     [SerializeField] private ScoreItem _scoreItem;
+    [SerializeField] private SpawnerNewBase _spawnerNewBase;
+    [SerializeField] private Color—hanger _color—hanger;
+    [SerializeField] private ResourceStorage _resourceStorage;
 
-    private List<Unit> _units = new();
-    private Queue<Item> _resources = new();
-    private List<Item> _foundItems = new();
+    public void Initialize(PoolUnit poolUnit, TextMeshProUGUI text, Base prefab, PoolResource poolResource)
+    {
+        _spawnerUnit.SetPoolUnit(poolUnit);
+        _scoreItem.SetText(text);
+        _spawnerNewBase.SetPrefabBase(prefab);
+        _resourceStorage.SetPoolResource(poolResource);
+    }
 
-    public int CountResource { get; private set; }
+    public void GiveInfo(out PoolUnit poolUnit, out TextMeshProUGUI text, out Base prefab, out PoolResource poolResource)
+    {
+        poolUnit = _spawnerUnit.GiveInfoPool();
+        text = _scoreItem.GiveInfoText();
+        prefab = _spawnerNewBase.GiveInfoPreafab();
+        poolResource = _resourceStorage.GiveInfoPool();
+    }
+
+    public bool CanPlaceFlag { get; private set; }
+
+    public event Action<int> AmountResourceUpdated;
 
     private void OnEnable()
     {
-        _resourceFinder.FoundItem += LearnAboutResource;
+        _resourceFinder.FoundItem += AddResource;
+        _resourceStorage.AddedResource += AssignWork;
+        _spawnerNewBase.SetFlag += FlagPlaced;
+        _spawnerUnit.SpentResource += GiveResource;
     }
 
     private void OnDisable()
     {
-        _resourceFinder.FoundItem -= LearnAboutResource;
+        _resourceFinder.FoundItem -= AddResource;
+        _resourceStorage.AddedResource -= AssignWork;
+        _spawnerNewBase.SetFlag -= FlagPlaced;
+        _spawnerUnit.SpentResource -= GiveResource;
     }
 
-    public void AddUnit(Unit unit)
+    private void Start()
     {
-        unit.SetBase(this);
-        _units.Add(unit);
+        CanPlaceFlag = false;
+    }
+
+    private void OnMouseUp()
+    {
+        CanPlaceFlag = true;
+        _color—hanger.ChangeColor();
+    }
+
+    public void FlagPlaced()
+    {
+        CanPlaceFlag = false;
+        _color—hanger.RestoreColor();
+    }
+
+    private void GiveResource(int amountResource)
+    {
+        _resourceStorage.SpendResource(amountResource);
+        AmountResourceUpdated?.Invoke(_resourceStorage.CountResource);
     }
 
     public void TakeItem(Item item)
     {
-        ++CountResource;
-        RemoveIdenticalResource(item);
-        _poolResource.ReturnItem(item);
-        _scoreItem.UpdateScore();
+        _resourceStorage.IncreaseCount();
+        _resourceStorage.RemoveIdenticalResource(item);
+        _resourceStorage.ReturnPool(item);
+        AmountResourceUpdated?.Invoke(_resourceStorage.CountResource);
     }
 
     public void AssignWork()
     {
-        for (int i = 0; i < _units.Count; i++)
-        {
-            if (_units[i].IsAtWork == false && _resources.Count > 0)
-            {
-                Item item = _resources.Dequeue();
-                _units[i].Activate();
-                _units[i].GoToResource(item);
+        Unit unit = _spawnerUnit.GiveFreeUnit();
 
-                return;
-            }
+        if (unit != null && _resourceStorage._resources.Count > 0)
+        {
+            Item item = _resourceStorage.GiveInfoResource();
+            unit.GoToPoint(item.transform);
+            unit.SetItem(item);
         }
     }
 
-    private void LearnAboutResource(Item item)
+    public Unit GiveFreeUnit()
     {
-        if(!_foundItems.Contains(item)) 
-        {
-            AddResource(item);
-        }
+        return _spawnerUnit.GiveFreeUnit();
+    }
+
+    public int GiveInfoCountResorce()
+    {
+        return _resourceStorage.CountResource;
     }
 
     private void AddResource(Item item)
     {
-        _foundItems.Add(item);
-        _resources.Enqueue(item);
-        AssignWork();
-    }
-
-    private void RemoveIdenticalResource(Item item)
-    {
-        _foundItems.Remove(item);
+        _resourceStorage.CheckResource(item);
     }
 }

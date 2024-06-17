@@ -11,7 +11,7 @@ public class UnitMover : MonoBehaviour
 
     private IEnumerator GoInDirection(Transform point)
     {
-        while (Vector3.Distance(transform.position, point.position) > 0.1f)
+        while (Vector3.Distance(transform.position, point.position) > 0.5f)
         {
             transform.position = Vector3.MoveTowards(transform.position, point.position, _speed * Time.deltaTime);
 

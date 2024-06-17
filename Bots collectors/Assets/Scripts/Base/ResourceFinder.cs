@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Linq;
 using UnityEngine;
 
@@ -9,7 +10,12 @@ public class ResourceFinder : MonoBehaviour
 
     public event Action<Item> FoundItem;
 
-    public void Scan()
+    private void FixedUpdate()
+    {
+        Scan();
+    }
+
+    private void Scan()
     {
         Collider[] resources = Physics.OverlapSphere(transform.position, _scanRadius, _layerMask);
 
@@ -17,7 +23,7 @@ public class ResourceFinder : MonoBehaviour
         {
             if (resource.TryGetComponent(out Item item))
             {
-                FoundItem.Invoke(item);
+                FoundItem?.Invoke(item);
             }
         }
     }
@@ -28,3 +34,4 @@ public class ResourceFinder : MonoBehaviour
         Gizmos.DrawSphere(transform.position, _scanRadius);
     }
 }
+
