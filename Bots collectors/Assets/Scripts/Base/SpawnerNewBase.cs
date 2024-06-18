@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
@@ -40,8 +38,9 @@ public class SpawnerNewBase : MonoBehaviour
         if (_base.GiveInfoCountResorce() >= _priceNewBase && _unit != null)
         {
             _unit.GoToPoint(_currentFlag.transform);
-            _unit.SetFlag(_currentFlag);
+            _currentFlag.SetUnit(_unit);
         }
+
     }
 
     private void PutFlag()
@@ -71,6 +70,7 @@ public class SpawnerNewBase : MonoBehaviour
         if (_currentFlag == null)
         {
             _currentFlag = Instantiate(_flagPrefab, _pointSet, Quaternion.identity);
+            _currentFlag.CameConstruction += BildBase;
             SendBild();
         }
         else
@@ -78,5 +78,20 @@ public class SpawnerNewBase : MonoBehaviour
             _currentFlag.transform.position = _pointSet;
             SendBild();
         }
+    }
+
+    public void BildBase()
+    {
+        _base.GiveInfo(out PoolUnit poolUnit, out TextMeshProUGUI text, out Base prefab, out PoolResource poolResource);
+
+        Base newBase = Instantiate(prefab, _currentFlag.transform.position, Quaternion.identity);
+
+        newBase.Initialize(poolUnit, text, prefab, poolResource);
+
+        _unit.SetBase(newBase);
+
+        _currentFlag.CameConstruction -= BildBase;
+
+        Destroy(_currentFlag);
     }
 }

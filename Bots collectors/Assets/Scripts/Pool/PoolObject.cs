@@ -1,15 +1,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PoolObject<T> where T : MonoBehaviour
+public class PoolObject<T> : MonoBehaviour where T : MonoBehaviour
 {
-    private Queue<T> _poolObject = new();
-    private T _prefab;
+    [SerializeField] private T _prefab;
 
-    public PoolObject(T prefab)
-    {
-        _prefab = prefab;
-    }
+    private Queue<T> _poolObject = new();
 
     public T GetObject()
     {
@@ -27,13 +23,17 @@ public class PoolObject<T> where T : MonoBehaviour
 
     public void ReturnObject(T item)
     {
-        item.gameObject.SetActive(false);
-        _poolObject.Enqueue(item);
+        if(item != null)
+        {
+            item.transform.SetParent(null, false);
+            item.gameObject.SetActive(false);
+            _poolObject.Enqueue(item);
+        }
     }
 
     private void CreateObject()
     {
-        var item = Object.Instantiate(_prefab);
+        var item = Instantiate(_prefab);
         item.gameObject.SetActive(false);
 
         _poolObject.Enqueue(item);

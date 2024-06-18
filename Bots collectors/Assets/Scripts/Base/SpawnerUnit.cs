@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class SpawnerUnit : MonoBehaviour
 {
@@ -19,15 +20,10 @@ public class SpawnerUnit : MonoBehaviour
     {
         StartCoroutine(Spawn());
     }
-    public void SetPoolUnit(PoolUnit poolUnit)
-    {
-        _poolUnit = poolUnit;
-    }
 
-    public PoolUnit GiveInfoPool()
-    {
-        return _poolUnit;
-    }
+    public void SetPoolUnit(PoolUnit poolUnit) => _poolUnit = poolUnit;
+
+    public PoolUnit GiveInfoPool() => _poolUnit;
 
     public Unit GiveFreeUnit()
     {
@@ -46,10 +42,7 @@ public class SpawnerUnit : MonoBehaviour
     {
         if (_base.GiveInfoCountResorce() >= _pricePerUnit)
         {
-            Unit unit = _poolUnit.GetUnit();
-            unit.transform.position = _spawnPoint[UnityEngine.Random.Range(0, _spawnPoint.Length)].position;
-            unit.SetBase(_base);
-            _units.Add(unit);
+            UnitSetup(_spawnPoint[UnityEngine.Random.Range(0, _spawnPoint.Length)].position);
             SpentResource?.Invoke(_pricePerUnit);
         }
     }
@@ -58,12 +51,17 @@ public class SpawnerUnit : MonoBehaviour
     {
         for (int i = 0; i < _spawnPoint.Length; i++)
         {
-            Unit unit = _poolUnit.GetUnit();
-            unit.transform.position = _spawnPoint[i].position;
-            unit.SetBase(_base);
-            _units.Add(unit);
+            UnitSetup(_spawnPoint[i].position);
 
             yield return null;
         }
+    }
+
+    private void UnitSetup(Vector3 transform)
+    {
+        Unit unit = _poolUnit.GetObject();
+        unit.transform.position = transform;
+        unit.SetBase(_base);
+        _units.Add(unit);
     }
 }

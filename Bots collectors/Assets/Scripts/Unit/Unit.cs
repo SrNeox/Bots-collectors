@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 
@@ -6,7 +7,7 @@ public class Unit : MonoBehaviour
     private Base _base;
     private Item _item;
     private UnitMover _mover;
-    private Flag _flag;
+    private float _position—orrection = 2;
 
     public bool IsAtWork { get; private set; }
 
@@ -36,14 +37,6 @@ public class Unit : MonoBehaviour
                 _item = null;
             }
         }
-
-        if (collider.TryGetComponent(out Flag flag))
-        {
-            if (flag == _flag)
-            {
-                BildBase(_flag.transform.position);
-            }
-        }
     }
 
     public void GoToPoint(Transform point)
@@ -52,45 +45,17 @@ public class Unit : MonoBehaviour
         _mover.StartGoInDirection(point);
     }
 
-    public void SetBase(Base newbase)
-    {
-        _base = newbase;
-    }
+    public void SetBase(Base newbase) => _base = newbase;
 
-    public void SetItem(Item item)
-    {
-        _item = item;
-    }
+    public void SetItem(Item item) => _item = item;
 
-    public void SetFlag(Flag flag)
-    {
-        _flag = flag;
-    }
+    public void Activate() => IsAtWork = true;
 
-    public void Activate()
-    {
-        IsAtWork = true;
-    }
-
-    private void Deactivate()
-    {
-        IsAtWork = false;
-    }
+    private void Deactivate() => IsAtWork = false;
 
     private void TakeItem(Collider collider)
     {
         collider.transform.SetParent(transform, false);
-        collider.transform.position = new Vector3(transform.position.x, transform.position.y + 2, transform.position.z);
-    }
-
-    public void BildBase(Vector3 flagPosition)
-    {
-        _base.GiveInfo(out PoolUnit poolUnit, out TextMeshProUGUI text, out Base prefab, out PoolResource poolResource);
-
-        Base newBase = Instantiate(prefab, flagPosition, Quaternion.identity);
-
-        newBase.Initialize(poolUnit, text, prefab, poolResource);
-
-        SetBase(newBase);
+        collider.transform.position = new Vector3(transform.position.x, transform.position.y + _position—orrection, transform.position.z);
     }
 }

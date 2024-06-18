@@ -316,7 +316,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55548a7b62e452e4696654b0e041346b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _prefabUnit: {fileID: -1484264503079729397, guid: 7a3b5b4e3ce05f049b1ad183215533f3, type: 3}
+  _prefab: {fileID: -1484264503079729397, guid: 7a3b5b4e3ce05f049b1ad183215533f3, type: 3}
 --- !u!4 &257173141
 Transform:
   m_ObjectHideFlags: 0
@@ -486,7 +486,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9673a026bf2d2e44be4d0a3c52c844a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _prefabItem: {fileID: 285034515372857554, guid: 81c71bfa228634343bc9b237d7bc0d9b, type: 3}
+  _prefab: {fileID: 285034515372857554, guid: 81c71bfa228634343bc9b237d7bc0d9b, type: 3}
 --- !u!4 &854091596
 Transform:
   m_ObjectHideFlags: 0

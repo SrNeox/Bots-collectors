@@ -21,7 +21,7 @@ public class SpawnerResources : MonoBehaviour
         {
             for (int i = 0; i < _spawnPoints.Length; i++)
             {
-                Item recourse = _poolResource.GetItem();
+                Item recourse = _poolResource.GetObject();
 
                 recourse.transform.position = _spawnPoints[i].position;
 

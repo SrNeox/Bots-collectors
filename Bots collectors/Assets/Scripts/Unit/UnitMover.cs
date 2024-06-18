@@ -8,16 +8,7 @@ public class UnitMover : MonoBehaviour
     [SerializeField, Min(1f)] private float _speed;
 
     private Coroutine _goInDirection;
-
-    private IEnumerator GoInDirection(Transform point)
-    {
-        while (Vector3.Distance(transform.position, point.position) > 0.5f)
-        {
-            transform.position = Vector3.MoveTowards(transform.position, point.position, _speed * Time.deltaTime);
-
-            yield return null;
-        }
-    }
+    private float _minDistance = 0.3f;
 
     public void StartGoInDirection(Transform point)
     {
@@ -36,6 +27,16 @@ public class UnitMover : MonoBehaviour
         {
             StopCoroutine(_goInDirection);
             _goInDirection = null;
+        }
+    }
+
+    private IEnumerator GoInDirection(Transform point)
+    {
+        while (Vector3.Distance(transform.position, point.position) > _minDistance)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, point.position, _speed * Time.deltaTime);
+
+            yield return null;
         }
     }
 }

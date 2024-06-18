@@ -356,7 +356,6 @@
 "Assets/Scripts/Base/ColorСhanger.cs"
 "Assets/Scripts/Base/ResourceFinder.cs"
 "Assets/Scripts/Base/ResourceStorage.cs"
-"Assets/Scripts/Base/resourceStorage.cs"
 "Assets/Scripts/Base/ScoreItem.cs"
 "Assets/Scripts/Base/SpawnerNewBase.cs"
 "Assets/Scripts/Base/SpawnerUnit.cs"

@@ -49,7 +49,7 @@ public class ResourceStorage : MonoBehaviour
 
     public void ReturnPool(Item item)
     {
-        _poolResource.ReturnItem(item);
+        _poolResource.ReturnObject(item);
     }
 
     public void SpendResource(int countResource)
