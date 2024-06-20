@@ -67,7 +67,6 @@
     <Compile Include="Assets\Scripts\SpawnerResource\SpawnerResources.cs" />
     <Compile Include="Assets\Scripts\Base\ColorСhanger.cs" />
     <Compile Include="Assets\Scripts\Base\Base.cs" />
-    <Compile Include="Assets\Scripts\Pool\PoolUnit.cs" />
     <Compile Include="Assets\Scripts\Pool\PoolObject.cs" />
     <Compile Include="Assets\Scripts\Item\Item.cs" />
     <Compile Include="Assets\Scripts\Base\ResourceFinder.cs" />

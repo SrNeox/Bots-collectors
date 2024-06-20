@@ -1,18 +1,22 @@
 using System.Collections;
-using System.Collections.Generic;
-using System.Security.Cryptography;
 using UnityEngine;
 
 public class UnitMover : MonoBehaviour
 {
-    [SerializeField, Min(1f)] private float _speed;
+    [SerializeField, Range(1, 4)] private float _speed;
 
     private Coroutine _goInDirection;
     private float _minDistance = 0.3f;
+    private float _minSqrDistance;
+
+    private void Start()
+    {
+        _minSqrDistance = _minDistance * _minDistance;
+    }
 
     public void StartGoInDirection(Transform point)
     {
-        if(_goInDirection != null)
+        if (_goInDirection != null)
         {
             StopCoroutine(_goInDirection);
             _goInDirection = null;
@@ -32,7 +36,7 @@ public class UnitMover : MonoBehaviour
 
     private IEnumerator GoInDirection(Transform point)
     {
-        while (Vector3.Distance(transform.position, point.position) > _minDistance)
+        while ((transform.position - point.position).sqrMagnitude > _minSqrDistance)
         {
             transform.position = Vector3.MoveTowards(transform.position, point.position, _speed * Time.deltaTime);
 

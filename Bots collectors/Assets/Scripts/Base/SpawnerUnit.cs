@@ -2,13 +2,12 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class SpawnerUnit : MonoBehaviour
 {
     [SerializeField] private Transform[] _spawnPoint;
-    [SerializeField] private PoolUnit _poolUnit;
     [SerializeField] private Base _base;
+    [SerializeField] private Unit _prefabUnit;
 
     private readonly List<Unit> _units = new();
 
@@ -21,9 +20,9 @@ public class SpawnerUnit : MonoBehaviour
         StartCoroutine(Spawn());
     }
 
-    public void SetPoolUnit(PoolUnit poolUnit) => _poolUnit = poolUnit;
+    public void SetPoolUnit(Unit unit) => _prefabUnit = unit;
 
-    public PoolUnit GiveInfoPool() => _poolUnit;
+    public Unit GiveInfoUnit() => _prefabUnit;
 
     public Unit GiveFreeUnit()
     {
@@ -59,8 +58,7 @@ public class SpawnerUnit : MonoBehaviour
 
     private void UnitSetup(Vector3 transform)
     {
-        Unit unit = _poolUnit.GetObject();
-        unit.transform.position = transform;
+        Unit unit = Instantiate(_prefabUnit, transform, Quaternion.identity);
         unit.SetBase(_base);
         _units.Add(unit);
     }

@@ -11,23 +11,27 @@ public class Base : MonoBehaviour
     [SerializeField] private Color—hanger _color—hanger;
     [SerializeField] private ResourceStorage _resourceStorage;
 
-    public bool CanPlaceFlag { get; private set; }
-
     public event Action<int> AmountResourceUpdated;
+
+    public bool CanPlaceFlag { get; private set; }
 
     private void OnEnable()
     {
-        _resourceFinder.FoundItem += AddResource;
-        _resourceStorage.AddedResource += AssignWork;
-        _spawnerNewBase.SetFlag += FlagPlaced;
-        _spawnerUnit.SpentResource += SpendResource;
+        if (_resourceFinder != null)
+            _resourceFinder.FoundItem += AddResource;
+        if (_resourceStorage != null)
+            _resourceStorage.AddedResource += AssignWork;
+        if (_spawnerNewBase != null)
+            _spawnerNewBase.FlagPlaced += FlagPlaced;
+        if (_spawnerUnit != null)
+            _spawnerUnit.SpentResource += SpendResource;
     }
 
     private void OnDisable()
     {
         _resourceFinder.FoundItem -= AddResource;
         _resourceStorage.AddedResource -= AssignWork;
-        _spawnerNewBase.SetFlag -= FlagPlaced;
+        _spawnerNewBase.FlagPlaced -= FlagPlaced;
         _spawnerUnit.SpentResource -= SpendResource;
     }
 
@@ -41,12 +45,6 @@ public class Base : MonoBehaviour
     {
         CanPlaceFlag = false;
         _color—hanger.RestoreColor();
-    }
-
-    private void SpendResource(int amountResource)
-    {
-        _resourceStorage.SpendResource(amountResource);
-        AmountResourceUpdated?.Invoke(_resourceStorage.CountResource);
     }
 
     public void TakeItem(Item item)
@@ -73,20 +71,26 @@ public class Base : MonoBehaviour
 
     public int GiveInfoCountResorce() => _resourceStorage.CountResource;
 
-    public void Initialize(PoolUnit poolUnit, TextMeshProUGUI text, Base prefab, PoolResource poolResource)
+    public void Initialize(Unit unit, TextMeshProUGUI text, Base prefab, PoolResource poolResource)
     {
-        _spawnerUnit.SetPoolUnit(poolUnit);
+        _spawnerUnit.SetPoolUnit(unit);
         _scoreItem.SetText(text);
         _spawnerNewBase.SetPrefabBase(prefab);
         _resourceStorage.SetPoolResource(poolResource);
     }
 
-    public void GiveInfo(out PoolUnit poolUnit, out TextMeshProUGUI text, out Base prefab, out PoolResource poolResource)
+    public void GiveInfo(out Unit unit , out TextMeshProUGUI text, out Base prefab, out PoolResource poolResource)
     {
-        poolUnit = _spawnerUnit.GiveInfoPool();
+        unit = _spawnerUnit.GiveInfoUnit();
         text = _scoreItem.GiveInfoText();
-        prefab = _spawnerNewBase.GiveInfoPreafab();
+        prefab = _spawnerNewBase.GetInfoPreafab();
         poolResource = _resourceStorage.GiveInfoPool();
+    }
+
+    private void SpendResource(int amountResource)
+    {
+        _resourceStorage.SpendResource(amountResource);
+        AmountResourceUpdated?.Invoke(_resourceStorage.CountResource);
     }
 
     private void AddResource(Item item) => _resourceStorage.CheckResource(item);

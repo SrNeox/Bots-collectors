@@ -3,12 +3,44 @@
   "WorkspaceRootPath": "C:\\Unity Project\\Unity Git\\Bots-collectors\\Bots collectors\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{EE8C1256-A35B-CF55-6942-C804644D0832}|Assembly-CSharp.csproj|C:\\Unity Project\\Unity Git\\Bots-collectors\\Bots collectors\\assets\\scripts\\base\\spawnernewbase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EE8C1256-A35B-CF55-6942-C804644D0832}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\base\\spawnernewbase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EE8C1256-A35B-CF55-6942-C804644D0832}|Assembly-CSharp.csproj|c:\\unity project\\unity git\\bots-collectors\\bots collectors\\assets\\scripts\\unit\\unitmover.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EE8C1256-A35B-CF55-6942-C804644D0832}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\unit\\unitmover.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EE8C1256-A35B-CF55-6942-C804644D0832}|Assembly-CSharp.csproj|c:\\unity project\\unity git\\bots-collectors\\bots collectors\\assets\\scripts\\unit\\unit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EE8C1256-A35B-CF55-6942-C804644D0832}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\unit\\unit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{EE8C1256-A35B-CF55-6942-C804644D0832}|Assembly-CSharp.csproj|c:\\unity project\\unity git\\bots-collectors\\bots collectors\\assets\\scripts\\base\\spawnerunit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{EE8C1256-A35B-CF55-6942-C804644D0832}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\base\\spawnerunit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{EE8C1256-A35B-CF55-6942-C804644D0832}|Assembly-CSharp.csproj|c:\\unity project\\unity git\\bots-collectors\\bots collectors\\assets\\scripts\\spawnerresource\\spawnerresources.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EE8C1256-A35B-CF55-6942-C804644D0832}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\spawnerresource\\spawnerresources.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{EE8C1256-A35B-CF55-6942-C804644D0832}|Assembly-CSharp.csproj|c:\\unity project\\unity git\\bots-collectors\\bots collectors\\assets\\scripts\\pool\\poolresource.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EE8C1256-A35B-CF55-6942-C804644D0832}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\pool\\poolresource.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EE8C1256-A35B-CF55-6942-C804644D0832}|Assembly-CSharp.csproj|c:\\unity project\\unity git\\bots-collectors\\bots collectors\\assets\\scripts\\flag\\flag.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EE8C1256-A35B-CF55-6942-C804644D0832}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\flag\\flag.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EE8C1256-A35B-CF55-6942-C804644D0832}|Assembly-CSharp.csproj|c:\\unity project\\unity git\\bots-collectors\\bots collectors\\assets\\scripts\\base\\scoreitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EE8C1256-A35B-CF55-6942-C804644D0832}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\base\\scoreitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EE8C1256-A35B-CF55-6942-C804644D0832}|Assembly-CSharp.csproj|c:\\unity project\\unity git\\bots-collectors\\bots collectors\\assets\\scripts\\base\\resourcefinder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EE8C1256-A35B-CF55-6942-C804644D0832}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\base\\resourcefinder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EE8C1256-A35B-CF55-6942-C804644D0832}|Assembly-CSharp.csproj|c:\\unity project\\unity git\\bots-collectors\\bots collectors\\assets\\scripts\\base\\color\u0441hanger.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EE8C1256-A35B-CF55-6942-C804644D0832}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\base\\color\u0441hanger.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EE8C1256-A35B-CF55-6942-C804644D0832}|Assembly-CSharp.csproj|C:\\Unity Project\\Unity Git\\Bots-collectors\\Bots collectors\\assets\\scripts\\base\\base.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EE8C1256-A35B-CF55-6942-C804644D0832}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\base\\base.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,32 +50,136 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 8,
           "Children": [
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "SpawnerResources.cs",
-              "DocumentMoniker": "C:\\Unity Project\\Unity Git\\Bots-collectors\\Bots collectors\\Assets\\Scripts\\SpawnerResource\\SpawnerResources.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\SpawnerResource\\SpawnerResources.cs",
-              "ToolTip": "C:\\Unity Project\\Unity Git\\Bots-collectors\\Bots collectors\\Assets\\Scripts\\SpawnerResource\\SpawnerResources.cs",
-              "RelativeToolTip": "Assets\\Scripts\\SpawnerResource\\SpawnerResources.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Title": "UnitMover.cs",
+              "DocumentMoniker": "C:\\Unity Project\\Unity Git\\Bots-collectors\\Bots collectors\\Assets\\Scripts\\Unit\\UnitMover.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Unit\\UnitMover.cs",
+              "ToolTip": "C:\\Unity Project\\Unity Git\\Bots-collectors\\Bots collectors\\Assets\\Scripts\\Unit\\UnitMover.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Unit\\UnitMover.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAAAFAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-18T12:44:38.342Z",
+              "WhenOpened": "2024-06-20T11:44:35.389Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 4,
+              "Title": "PoolResource.cs",
+              "DocumentMoniker": "C:\\Unity Project\\Unity Git\\Bots-collectors\\Bots collectors\\Assets\\Scripts\\Pool\\PoolResource.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Pool\\PoolResource.cs",
+              "ToolTip": "C:\\Unity Project\\Unity Git\\Bots-collectors\\Bots collectors\\Assets\\Scripts\\Pool\\PoolResource.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Pool\\PoolResource.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAuwAEAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-20T11:44:03.055Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "SpawnerUnit.cs",
               "DocumentMoniker": "C:\\Unity Project\\Unity Git\\Bots-collectors\\Bots collectors\\Assets\\Scripts\\Base\\SpawnerUnit.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Base\\SpawnerUnit.cs",
               "ToolTip": "C:\\Unity Project\\Unity Git\\Bots-collectors\\Bots collectors\\Assets\\Scripts\\Base\\SpawnerUnit.cs",
               "RelativeToolTip": "Assets\\Scripts\\Base\\SpawnerUnit.cs",
-              "ViewState": "AQIAACYAAAAAAAAAAAAkwDYAAAAAAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-18T12:44:11.141Z",
+              "WhenOpened": "2024-06-20T11:43:46.939Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "ScoreItem.cs",
+              "DocumentMoniker": "C:\\Unity Project\\Unity Git\\Bots-collectors\\Bots collectors\\Assets\\Scripts\\Base\\ScoreItem.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Base\\ScoreItem.cs",
+              "ToolTip": "C:\\Unity Project\\Unity Git\\Bots-collectors\\Bots collectors\\Assets\\Scripts\\Base\\ScoreItem.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Base\\ScoreItem.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABwAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-20T11:42:59.416Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "ResourceFinder.cs",
+              "DocumentMoniker": "C:\\Unity Project\\Unity Git\\Bots-collectors\\Bots collectors\\Assets\\Scripts\\Base\\ResourceFinder.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Base\\ResourceFinder.cs",
+              "ToolTip": "C:\\Unity Project\\Unity Git\\Bots-collectors\\Bots collectors\\Assets\\Scripts\\Base\\ResourceFinder.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Base\\ResourceFinder.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAAXAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-20T11:42:53.704Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Color\u0421hanger.cs",
+              "DocumentMoniker": "C:\\Unity Project\\Unity Git\\Bots-collectors\\Bots collectors\\Assets\\Scripts\\Base\\Color\u0421hanger.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Base\\Color\u0421hanger.cs",
+              "ToolTip": "C:\\Unity Project\\Unity Git\\Bots-collectors\\Bots collectors\\Assets\\Scripts\\Base\\Color\u0421hanger.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Base\\Color\u0421hanger.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-20T11:42:50.169Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Flag.cs",
+              "DocumentMoniker": "C:\\Unity Project\\Unity Git\\Bots-collectors\\Bots collectors\\Assets\\Scripts\\Flag\\Flag.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Flag\\Flag.cs",
+              "ToolTip": "C:\\Unity Project\\Unity Git\\Bots-collectors\\Bots collectors\\Assets\\Scripts\\Flag\\Flag.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Flag\\Flag.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAAAkAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-20T11:14:59.667Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Unit.cs",
+              "DocumentMoniker": "C:\\Unity Project\\Unity Git\\Bots-collectors\\Bots collectors\\Assets\\Scripts\\Unit\\Unit.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Unit\\Unit.cs",
+              "ToolTip": "C:\\Unity Project\\Unity Git\\Bots-collectors\\Bots collectors\\Assets\\Scripts\\Unit\\Unit.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Unit\\Unit.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABIAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-20T11:25:16.604Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "SpawnerNewBase.cs",
+              "DocumentMoniker": "C:\\Unity Project\\Unity Git\\Bots-collectors\\Bots collectors\\Assets\\Scripts\\Base\\SpawnerNewBase.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Base\\SpawnerNewBase.cs",
+              "ToolTip": "C:\\Unity Project\\Unity Git\\Bots-collectors\\Bots collectors\\Assets\\Scripts\\Base\\SpawnerNewBase.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Base\\SpawnerNewBase.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABcAAAA/AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-20T10:42:42.888Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Base.cs",
+              "DocumentMoniker": "C:\\Unity Project\\Unity Git\\Bots-collectors\\Bots collectors\\Assets\\Scripts\\Base\\Base.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Base\\Base.cs",
+              "ToolTip": "C:\\Unity Project\\Unity Git\\Bots-collectors\\Bots collectors\\Assets\\Scripts\\Base\\Base.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Base\\Base.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-20T07:16:54.773Z",
               "EditorCaption": ""
             }
           ]

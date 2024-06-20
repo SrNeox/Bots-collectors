@@ -1,5 +1,4 @@
 using System;
-using TMPro;
 using UnityEngine;
 
 public class Unit : MonoBehaviour
@@ -7,8 +6,10 @@ public class Unit : MonoBehaviour
     private Base _base;
     private Item _item;
     private UnitMover _mover;
+    private Flag _flag;
     private float _positionÑorrection = 2;
 
+    public event Action UnitReadyToBuild;
     public bool IsAtWork { get; private set; }
 
     private void Start()
@@ -37,6 +38,14 @@ public class Unit : MonoBehaviour
                 _item = null;
             }
         }
+
+        if (collider.TryGetComponent(out Flag flag))
+        {
+            if (_flag == flag)
+            {
+                UnitReadyToBuild?.Invoke();
+            }
+        }
     }
 
     public void GoToPoint(Transform point)
@@ -48,6 +57,8 @@ public class Unit : MonoBehaviour
     public void SetBase(Base newbase) => _base = newbase;
 
     public void SetItem(Item item) => _item = item;
+
+    public void SetFlag(Flag flag) => _flag = flag;
 
     public void Activate() => IsAtWork = true;
 

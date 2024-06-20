@@ -363,7 +363,6 @@
 "Assets/Scripts/Item/Item.cs"
 "Assets/Scripts/Pool/PoolObject.cs"
 "Assets/Scripts/Pool/PoolResource.cs"
-"Assets/Scripts/Pool/PoolUnit.cs"
 "Assets/Scripts/SpawnerResource/SpawnerResources.cs"
 "Assets/Scripts/Unit/Unit.cs"
 "Assets/Scripts/Unit/UnitMover.cs"
